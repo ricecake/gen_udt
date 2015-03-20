@@ -1,0 +1,12 @@
+{application, gen_udt,
+ [
+  {description, ""},
+  {vsn, "1"},
+  {registered, []},
+  {applications, [
+                  kernel,
+                  stdlib
+                 ]},
+  {mod, { gen_udt_app, []}},
+  {env, []}
+ ]}.
