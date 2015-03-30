@@ -23,5 +23,8 @@ start_link() ->
 %% ===================================================================
 
 init([]) ->
-    {ok, { {rest_for_one, 5, 10}, []} }.
+	{ok, { {rest_for_one, 5, 10}, [
+		?CHILD(gen_udt_listener, worker),
+		?CHILD(gen_udt_port_sup, supervisor)
+	]} }.
 

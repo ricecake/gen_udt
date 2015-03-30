@@ -23,5 +23,5 @@ start_link() ->
 %% ===================================================================
 
 init([]) ->
-    {ok, { {one_for_one, 5, 10}, []} }.
+    {ok, { {simple_one_for_one, 5, 10}, [ ?CHILD(gen_udt_port, worker) ]} }.
 
