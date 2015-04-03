@@ -7,7 +7,7 @@ parse(Packet) -> parse(Packet, []).
 serialize(Packet) -> serialize(Packet, []).
 
 
-%   The data packet header structure is as following.
+%   The data packet header structure is as follows.
 %
 %   0                   1                   2                   3
 %   0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
@@ -20,6 +20,25 @@ serialize(Packet) -> serialize(Packet, []).
 %   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 %   |                    Destination Socket ID                      |
 %   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+
+%   The control packet header structure is as follows.
+
+%   0                   1                   2                   3
+%   0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+%   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+%   |1|             Type            |            Reserved           |
+%   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+%   |     |                    Additional Info                      |
+%   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+%   |                            Time Stamp                         |
+%   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+%   |                    Destination Socket ID                      |
+%   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+%   |                                                               |
+%   ~                 Control Information Field                     ~
+%   |                                                               |
+%   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+
 parse(Packet, Opts) when is_binary(Packet) -> {ok, #{}}.
 
 
